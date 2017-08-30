@@ -19,7 +19,15 @@ RSpec.feature "User searches stations by zipcode" do
   end
   scenario "they see name, address, fuel type, distance and access times for each station" do
     VCR.use_cassette('features/user_searches_by_zipcode') do
+      visit root_path
+      fill_in "q", with: '80203'
+      click_on "Locate"
 
+      expect(page).to have_css(".name", count: 10)
+      expect(page).to have_css(".address", count: 10)
+      expect(page).to have_css(".fuel_type", count: 10)
+      expect(page).to have_css(".access_time", count: 10)
+      expect(page).to have_css(".distance", count: 10)
     end
   end
   scenario "the results are sorted by distance and within 6 miles" do

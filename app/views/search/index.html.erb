@@ -1,5 +1,11 @@
 <h1>Search Results</h1>
 
 <% @stations.each do |station| %>
-  <span class = "station"><%= station.name %> </span>
+  <div class = "station">
+    <p class = "name"><%= station.name %></p>
+    <p class = "address"><%= station.address %></p>
+    <p class = "fuel_type"><%= station.fuel_type %></p>
+    <p class = "distance"><%= station.distance %></p>
+    <p class = "access_time"><%= station.access_time %></p>
+  </span>
 <% end %>

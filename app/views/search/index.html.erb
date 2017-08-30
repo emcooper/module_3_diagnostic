@@ -1,1 +1,5 @@
 <h1>Search Results</h1>
+
+<% @stations.each do |station| %>
+  <span class = "station"><%= station.name %> </span>
+<% end %>

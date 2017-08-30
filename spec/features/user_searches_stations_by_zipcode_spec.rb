@@ -20,7 +20,7 @@ RSpec.feature "User searches stations by zipcode" do
 
     end
   end
-  scenario "the results are sorted by distance" do
+  scenario "the results are sorted by distance and within 6 miles" do
     VCR.use_cassette('spec/cassettes/user_searches_by_zipcode') do
 
     end

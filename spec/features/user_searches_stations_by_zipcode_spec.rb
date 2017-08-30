@@ -12,9 +12,14 @@ RSpec.feature "User searches stations by zipcode" do
   end
   scenario "they only see electric & propane stations" do
     VCR.use_cassette('features/user_searches_by_zipcode') do
+      visit root_path
+      fill_in "q", with: '80203'
+      click_on "Locate"
 
-
-
+      expect(page).to_not have_content("BD")
+      expect(page).to_not have_content("E85")
+      expect(page).to_not have_content("HY")
+      expect(page).to_not have_content("LNG")
     end
   end
   scenario "they see name, address, fuel type, distance and access times for each station" do

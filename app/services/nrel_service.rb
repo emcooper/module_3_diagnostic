@@ -8,8 +8,8 @@ class NrelService
 
 
   def find_by_zip
-    response = @conn.get("/api/alt-fuel-stations/v1/nearest.format?location=#{@zip}")
-    JSON.parse(response.body, :symbolize_names => true)
+    response = @conn.get("api/alt-fuel-stations/v1.json?radius=6&location=80203&limit=10&format=JSON&api_key=#{ENV["NREL_Key"]}")
+    JSON.parse(response.body, :symbolize_names => true)[:fuel_stations]
   end
 
 
